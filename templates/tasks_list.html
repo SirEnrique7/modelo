@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Task List</h1>
+{% extends '_base.html' %}
+
+{% block content %}
     <ul>
         {% for to_do in task_list %} 
-            <li>{{ to_do.title }} - {{ to_do.created_at}}</li>
+            <li><a href="{% url 'task-detail' to_do.pk %}">{{ to_do.title }}</a> - {{ to_do.created_at}}</li>
         {% endfor %} 
         <!--  esto es jinja, el lenguaje de plantillas de django, se usa para iterar sobre la lista de tareas y mostrar cada una en un elemento de lista -->
     </ul>
-</body>
-</html>
+{% endblock content %}
